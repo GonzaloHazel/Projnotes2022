@@ -7,14 +7,22 @@
 // var app = require('../app');
 // ES6 👇
 import app from "../app"
-var debug = require('debug')('projnotes2022b:server');
-var http = require('http');
+//ES5👇
+//var debug = require('debug')('projnotes2022b:server');
+//ES6👇🦝?
+import debug from 'debug';
+//ES5👇
+//var http = require('http');
+//ES6👇
+import http from 'http';
 
 /**
  * Get port from environment and store in Express.
  */
-
-var port = normalizePort(process.env.PORT || '3000');
+//ES5 👇
+//var port = normalizePort(process.env.PORT || '3000');
+//ES6👇
+const port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 
 /**
@@ -23,7 +31,10 @@ app.set('port', port);
 
 // app es una funcion de tipo middleware (codigo intermediario)
 // (req, res) =>{ ...res.send("algo") }
-var server = http.createServer(app);
+// ES5 👇
+//var server = http.createServer(app);
+// ES6 👇
+const server = http.createServer(app);
 
 /**
  * Listen on provided port, on all network interfaces.
@@ -37,8 +48,11 @@ server.on('listening', onListening);
  * Normalize a port into a number, string, or false.
  */
 
-function normalizePort(val) {
-  var port = parseInt(val, 10);
+function normalizePort (val) {
+  //ES5 👇
+  //var port = parseInt(val, 10);
+  //ES6 👇
+  const port = parseInt(val, 10);
 
   if (isNaN(port)) {
     // named pipe
@@ -62,19 +76,25 @@ function onError(error) {
     throw error;
   }
 
-  var bind = typeof port === 'string'
+  // ES6 👇 ES5👉 var bind = typeof port === 'string'
+  let bind = typeof port === 'string'
     // ? 'Pipe ' + port
     ? `Pipe ${port}`
-    : 'Port ' + port;
+    //ES5 👇 🦝?
+    //: 'Port ' + port;
+    // ES6 👇🦝?
+    : `Port ${port}`;
 
   // handle specific listen errors with friendly messages
   switch (error.code) {
     case 'EACCES':
-      console.error(bind + ' requires elevated privileges');
+      // interpolacion 👇 CONCATENACION 🦝👉 console.error(bind + '${bind} requires elevated privileges');
+      console.error(`${bind} requires elevated privileges`);
       process.exit(1);
       break;
     case 'EADDRINUSE':
-      console.error(bind + ' is already in use');
+      // Interpolacion 👇 Concatenaicon 🦝👉 console.error(bind + ' is already in use');
+      console.error(`${bind} is already in use`);
       process.exit(1);
       break;
     default:
@@ -87,12 +107,21 @@ function onError(error) {
  */
 
 function onListening() {
-  var addr = server.address();
-  var bind = typeof addr === 'string'
-    ? 'pipe ' + addr
+  //ES6 👇 ES5 👉 var addr = server.address();
+  const addr = server.address();
+  //ES6 👇 ES5 👉 var bind = typeof addr === 'string'
+  const bind = typeof addr === 'string'
+  
+   /* Concatenaciones 👇 
+   ? 'pipe ' + addr
     : 'port ' + addr.port;
-  debug('Listening on ' + bind);
+    Interpolaciones 👇*/
+    ?`pipe ${addr}`
+    :`port ${port}`;
+
+  //Intrepolacion 👇 Concatenaicon 👉debug('Listening on ' + bind);
+  debug(`Listening on ${bind}`);
   // Desestrecuturando port de addr
-  let {port} = addr
+  //let {port} = addr
   console.log(`Listening at http://localhost:${port}`);
 }

@@ -1,8 +1,10 @@
-var express = require('express');
-var router = express.Router();
+// ES6 👇 ES5 👉var express = require('express');
+import express  from 'express';
+// ES6 👇 ESC5 👉var router = express.Router();
+let router = express.Router();
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
+router.get('/',  (req, res, next)=> {
   res.send('!!Welcome Babel-Nodemon 🗼👺');
 });
 
