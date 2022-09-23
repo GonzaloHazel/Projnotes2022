@@ -5,7 +5,9 @@
   "scripts": {
     "start": "node ./server/bin/www",
     "dev": "nodemon --exec babel-node ./server/bin/www",
-    "devb": "babel-watch ./server/bin/www"
+    "devb": "babel-watch ./server/bin/www",
+    "build":"npm run clean && babel ./server --out-dir dist --copy-files",
+    "clean":"rm -rf dist"
   },
   "dependencies": {
         "app-root-path": "^3.0.0",
