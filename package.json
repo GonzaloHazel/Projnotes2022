@@ -7,7 +7,8 @@
     "dev": "nodemon --exec babel-node ./server/bin/www",
     "devb": "babel-watch ./server/bin/www",
     "build":"npm run clean && babel ./server --out-dir dist --copy-files",
-    "clean":"rm -rf dist"
+    "clean":"rm -rf dist",
+    "devc": "NODE_ENV=development && webpack serve --config ./webpack.config.js --mode development"
   },
   "dependencies": {
         "app-root-path": "^3.0.0",
