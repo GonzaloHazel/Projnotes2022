@@ -5,10 +5,13 @@
   "scripts": {
     "start": "node ./server/bin/www",
     "dev": "nodemon --exec babel-node ./server/bin/www",
+    "devc": "NODE_ENV=development && webpack serve --config ./webpack.dev.config.js --mode development",
     "devb": "babel-watch ./server/bin/www",
-    "build":"npm run clean && babel ./server --out-dir dist --copy-files",
-    "clean":"rm -rf dist",
-    "devc": "NODE_ENV=development && webpack serve --config ./webpack.dev.config.js --mode development"
+    "cleans": "rm -rf dist",
+    "cleanc": "rm -f bundle.js",
+    "b:s": "npm run cleans && babel ./server --out-dir dist --copy-files",
+    "b:c": "npm run cleanc && webpack --config ./webpack.config.js --mode production",
+    "build": "npm run b:c && npm run b:s"
   },
     "dependencies": {
         "app-root-path": "^3.0.0",

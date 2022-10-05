@@ -17,5 +17,30 @@ module.exports = {
     path: path.resolve(__dirname, "public"),
     // 2.2 Nombre del archivo de salida
     filename: "bundle.js"
+  },
+
+  module:{
+    rules:[
+        {
+            test:/\.js$/,
+            exclude:/(node_modules | bower_components)/,
+            use:[{
+                loader:'babel-loader',
+                options:{
+                    presets:[
+                        [
+                            '@babel/preset-env',
+                            {
+                                'modules':false,
+                                'useBuiltIns':'usage',
+                                'targets':{"chrome":"80"},
+                                'corejs':3
+                            }
+                        ]
+                    ]
+                }
+            }]
+        }
+    ]
   }
 }
