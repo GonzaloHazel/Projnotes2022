@@ -25,3 +25,6 @@ async function asyncCall(){
 }
 
 asyncCall()
+//Cargando Hoja de estilos
+import './stylesheet/style.css'
+import './stylesheet/mystyles.css'
