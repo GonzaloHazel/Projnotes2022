@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "NODE_ENV=production node ./dist/bin/www",
-    "dev": "NODE_ENV=development nodemon --exec babel-node ./server/bin/www",
+    "dev": "DEBUG=projnotes2022 NODE_ENV=development nodemon --exec babel-node ./server/bin/www",
     "devc": "NODE_ENV=development && webpack serve --config ./webpack.dev.config.js --mode development",
     "devb": "babel-watch ./server/bin/www",
     "cleans": "rm -rf dist",

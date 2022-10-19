@@ -10,7 +10,7 @@ import app from "../app"
 //ES5👇
 //var debug = require('debug')('projnotes2022b:server');
 //ES6👇🦝?
-import debug from 'debug';
+import debug from '../services/debugLogger';
 //ES5👇
 //var http = require('http');
 //ES6👇

@@ -1,4 +1,4 @@
-console.log("Webpack Working!!! 📦");
+console.log("Webpack Working!!! 📦 🦝");
 //Codigo ES6
 //Default parameters
 let show=(ms="No message given")=>{
