@@ -1,30 +1,5 @@
-console.log("Webpack Working!!! 📦 🦝");
-//Codigo ES6
-//Default parameters
-let show=(ms="No message given")=>{
-    console.log(ms);
-}
+// Cargando Hoja de estilos
+import './stylesheet/style.css';
+import './stylesheet/mystyles.css';
 
-show();
-
-//Async Await
-
-function resolveAfter2Seconds(){
-    return new Promise(resolve=>{
-        setTimeout(()=>{
-            resolve('resolved')
-        },2000)
-    });
-}
-// Forma "antigua de llamar" 👉 resolveAfter2Seconds().then(data=>{console.log(data)});
-
-async function asyncCall(){
-    console.log("Calling");
-    const result=await resolveAfter2Seconds();
-    console.log(result);
-}
-
-asyncCall()
-//Cargando Hoja de estilos
-import './stylesheet/style.css'
-import './stylesheet/mystyles.css'
+console.log('Webpack Working!!! 📦 🦝');
