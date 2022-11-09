@@ -4,14 +4,15 @@
   "private": true,
   "scripts": {
     "start": "NODE_ENV=production node ./dist/bin/www",
-    "dev": "eslint --fix ./client && DEBUG=projnotes2022 NODE_ENV=development nodemon --exec babel-node ./server/bin/www",
-    "devc": "NODE_ENV=development && webpack serve --config ./webpack.dev.config.js --mode development",
+    "dev": "DEBUG=projnotes2022b NODE_ENV=development nodemon --exec babel-node ./server/bin/www",
+    "devc": "eslint --fix ./client && NODE_ENV=development && webpack serve --config ./webpack.dev.config.js --mode development",
     "devb": "babel-watch ./server/bin/www",
     "cleans": "rm -rf dist",
     "cleanc": "rm -f ./public/bundle.js ./public/stylesheets/app.css",
     "b:s": "npm run cleans && babel ./server --out-dir dist --copy-files",
     "b:c": "npm run cleanc && webpack --config ./webpack.config.js --mode production",
-    "build": "npm run b:c && npm run b:s"
+    "build": "npm run b:c && npm run b:s",
+    "clean-logs": "rm -rf ./server/logs/*.log"
   },
   "dependencies": {
     "app-root-path": "^3.0.0",
