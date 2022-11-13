@@ -1,7 +1,7 @@
 // Biblioteca de 3ros para manejar errores http
 // ES5: var createError = require('http-errors');
 // ES6 👇
-import createError from 'http-errors';
+// import createError from 'http-errors';
 // El framework express
 import express from 'express';
 // Biblioteca del nucleo de node que sirve para
@@ -33,6 +33,7 @@ import webpackConfig from '../webpack.dev.config';
 
 // iportndo enrutador
 import router from './routes/router';
+// import { error } from 'console';
 
 // Recuperar el modo de ejecución de la app
 const nodeEnv = process.env.NODE_ENV || 'development';
@@ -91,11 +92,18 @@ app.use(express.static(path.join(__dirname, '..', 'public')));
 router.addRoutes(app);
 
 // catch 404 and forward to error handler
-app.use((req, res, next) => {
+app.use((req, res) => {
+  const viewModel = {
+    OriginalUrl: req.originalUrl,
+    Method: req.method,
+    message: 'no existe esta direccion :( ',
+  };
+
   logger.error(
-    `404 Page Not Found - ${req.originalUrl} - Method: ${req.method}`
+    `404 Page Not Found - ${viewModel.OriginalUrl} - Method: ${viewModel.Method}`
   );
-  next(createError(404));
+  res.render('error', viewModel);
+  // next(createError(404));
 });
 
 // error handler
