@@ -9,8 +9,8 @@ const router = new Router();
 // GET '/'
 // GET '/Home'
 // Get '/index'
-router.get(['/', '/home', '/index'], homeController.Acctions.home);
-router.get('/about', homeController.Acctions.about);
+router.get(['/', '/home', '/index'], homeController.home);
+router.get('/about', homeController.about);
 
 // Exporto este tramo de ruta
 export default router;
