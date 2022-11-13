@@ -1,6 +1,6 @@
 // Cargando Hoja de estilos
-import './stylesheet/style.css';
-import './stylesheet/mystyles.css';
+// import './stylesheet/style.css';
+// import './stylesheet/mystyles.css';
 import 'materialize-css/dist/css/materialize.css';
 import 'materialize-css/dist/js/materialize';
 
