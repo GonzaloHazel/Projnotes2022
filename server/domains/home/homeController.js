@@ -1,3 +1,5 @@
+// importando las variables de entorno
+import configKeys from '../../config/configKeys';
 // creando los Acction Methods
 // GET "/"
 // Get "/Index"
@@ -12,10 +14,12 @@ const home = (req, res) => {
   res.render('home/home', viewModel);
 };
 
+// GET "/about"
 const about = (req, res) => {
   const viewModel = {
     title: 'About',
     Content: 'Aceca de Materialize',
+    appVersion: configKeys.appVersion,
   };
   res.render('home/about', viewModel);
 };

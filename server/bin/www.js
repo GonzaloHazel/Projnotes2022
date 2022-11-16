@@ -15,14 +15,15 @@ import debug from '../services/debugLogger';
 // ES5👇
 // var http = require('http');
 // ES6👇
-
+// importando config Keys
+import configKeys from '../config/configKeys';
 /**
  * Get port from environment and store in Express.
  */
 // ES5 👇
 // var port = normalizePort(process.env.PORT || '3000');
 // ES6👇
-const port = normalizePort(process.env.PORT || '3000');
+const port = normalizePort(configKeys.port);
 app.set('port', port);
 
 /**
