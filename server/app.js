@@ -97,6 +97,8 @@ app.use((req, res) => {
     OriginalUrl: req.originalUrl,
     Method: req.method,
     message: 'no existe esta direccion :( ',
+    layout: 'onlyerror',
+    title: '404 Error',
   };
 
   logger.error(
