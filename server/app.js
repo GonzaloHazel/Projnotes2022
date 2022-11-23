@@ -34,9 +34,12 @@ import webpackConfig from '../webpack.dev.config';
 // iportndo enrutador
 import router from './routes/router';
 // import { error } from 'console';
-
+// importando valroes de entorno
+import configKeys from './config/configKeys';
+// importando odm
+import MongooseOdm from './config/odm';
 // Recuperar el modo de ejecución de la app
-const nodeEnv = process.env.NODE_ENV || 'development';
+const nodeEnv = configKeys.env;
 
 // Creando una instancia de express
 const app = express();
@@ -69,6 +72,23 @@ if (nodeEnv === 'development') {
 } else {
   debug('✒ Ejecutando en modo de producción 🏭');
 }
+// Realizando la conexion a la base de datos
+// Creando una instancia a la conexion de la BD
+const moongoseODM = new MongooseOdm(configKeys.moongoUrl);
+// Ejecutar la conexion a la BD
+// Crear una IIFE para crear un ambio asincrono
+// que permita usar async await
+(async () => {
+  // ejecutamos el metodo de conexion
+  const connectionResult = await moongoseODM.connect();
+  // comprobamos si hay error
+  if (connectionResult) {
+    // Si conecto correctamente a la base de datos
+    logger.info('🦝✅ Conexion a la BD exitosa');
+  } else {
+    logger.error(' ❌ No se conecto a la base de datos.');
+  }
+})();
 
 // view engine setup
 // Configura el motor de plantillas

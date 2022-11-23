@@ -14,7 +14,7 @@ const defaultConfig = {
 // Configuracion de desarrollo
 const devConfig = {
   env: 'development',
-  moongoUrl: 'todo',
+  moongoUrl: process.env.DEV_DATABASE_URL,
   debug: process.env.DEBUG,
 };
 
