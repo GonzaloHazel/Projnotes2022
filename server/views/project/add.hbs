@@ -6,25 +6,30 @@
                 <span class="card-title">Agregar Proyecto</span>
             </div>
             <!--Contenido de la tarjeta-->
-            <form autocomplete="off" action="/project/add" method="post">
+            <form action="/project/add" autocomplete="off" method="post">
                 <div class="card-content">
                     <div class="input-field">
-                        <label for="project-name">Titulo del proyecto</label>
-                        <input type="text" name="name" id="project-name" placeholder="Nombre de tu idea de proyecto 👈">
+                        <label for="project-name">Nombre de tu idea de proyecto</label>
+                        <input type="text" name="name" id="project-name" placeholder="Nombre del proyecto aquí👇🏻" value="{{project.name}}">
+                        {{#if errorModel.nameError}}
+                        <span style="color:crimson;">🚨 {{errorModel.nameError}}</span>
+                        {{/if}}
                     </div>
-                    <div>
-                        <div class="input-field">
-                            <label for="project-description">Descripcion del proyecto</label>
-                            <textarea name="description" id="project-description" class="materialize-textarea"></textarea>
-                        </div>
+                    <div class="input-field">
+                        <label for="project-description">
+                            Descripción del proyecto
+                        </label>
+                        <textarea name="description" id="project-description" class="materialize-textarea">{{project.description}}</textarea>
+                        {{#if errorModel.descriptionError}}
+                        <span style="color:crimson;">🚨 {{errorModel.descriptionError}}</span>
+                        {{/if}}
                     </div>
+                </div>
                 <div class="card-action">
-                    <button type="submit" class="blue darken-3 waves-effect waves-light btn">
+                    <button type="submit" class="deep-purple darken-3 waves-effect waves-light btn">
                         <i class="material-icons left">note_add</i> Agregar
                     </button>
                 </div>
-            </form>
+                </form>
+            </div>
         </div>
-    </div>
-</div>
-
